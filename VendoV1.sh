@@ -1,21 +1,23 @@
 #!/bin/bash
 set -e
 
+
+
 echo "Updating system..."
 sudo apt update -y
 
-echo "Installing Apache & PHP..."
-sudo apt install -y apache2 php libapache2-mod-php
+# Target directory
+$Admin_DIR="/home/orangepi/myproject"
 
-echo "Copying website files..."
-sudo cp -r web/* /var/www/html/
+# Create directory if it doesn't exist
+sudo mkdir $TARGET_DIR
+sudo chown -R www-data:www-data $Admin_DIR
 
-echo "Setting permissions..."
-sudo chown -R www-data:www-data /var/www/html
-sudo chmod -R 755 /var/www/html
-
-echo "Restarting Apache..."
-sudo systemctl restart apache2
+# Download files
+curl -L https://github.com/jces227/OrangePi1V1/tree/main/admin/dashboard.php -o $Admin_DIR/dashboard.php
+curl -L https://github.com/jces227/OrangePi1V1/tree/main/admin/index.php -o $Admin_DIR/index.php
+curl -L https://github.com/jces227/OrangePi1V1/tree/main/admin/logout.php -o $Admin_DIR/logout.php
+curl -L https://github.com/jces227/OrangePi1V1/tree/main/admin/style.css -o $Admin_DIR/style.css
 
 echo "Done! Your website is installed."
 
