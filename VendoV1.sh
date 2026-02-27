@@ -7,7 +7,7 @@ echo "Updating system..."
 sudo apt update -y
 
 # Target directory
-$Admin_DIR="/home/orangepi/myproject"
+$Admin_DIR="/var/www/html/admin"
 
 # Create directory if it doesn't exist
 sudo mkdir $TARGET_DIR
