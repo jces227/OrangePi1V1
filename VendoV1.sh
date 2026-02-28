@@ -16,6 +16,7 @@ sudo apt install htop
 sudo apt install ca-certificates
 sudo apt install openssl
 sudo apt install gnupg
+y
 sudo apt install lsb-release
 sudo apt install software-properties-common
 
