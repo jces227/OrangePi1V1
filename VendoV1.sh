@@ -7,31 +7,29 @@ sudo udevadm control --reload
 echo "Updating System"
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y
-sudo apt install curl
-sudo apt install wget
-sudo apt install git
-y
-sudo apt install nano
-sudo apt install htop
-sudo apt install ca-certificates
-sudo apt install openssl
-sudo apt install gnupg
-y
-sudo apt install lsb-release
-sudo apt install software-properties-common
+sudo apt install -y curl
+sudo apt install -y wget
+sudo apt install -y git
+sudo apt install -y nano
+sudo apt install -y htop
+sudo apt install -y ca-certificates
+sudo apt install -y openssl
+sudo apt install -y gnupg
+sudo apt install -y lsb-release
+sudo apt install -y software-properties-common
 
 echo "Installing Ngix"
 sudo apt install -y nginx
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
-sudo apt install php-fpm
-sudo apt install php-cli
-sudo apt install php-curl
-sudo apt install php-json
-sudo apt install php-mbstring
-sudo apt install php-xml
-sudo apt install php-zip
+sudo apt install -y php-fpm
+sudo apt install -y php-cli
+sudo apt install -y php-curl
+sudo apt install -y php-json
+sudo apt install -y php-mbstring
+sudo apt install -y php-xml
+sudo apt install -y php-zip
 
 pip3 install requests
 sudo apt install -y supervisor
