@@ -45,7 +45,7 @@ sysctl --system
 netplan apply
 
 sudo apt update
-sudo apt install iptables iptables-persistent -y
+sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables iptables-persistent
 
 iptables -t nat -A POSTROUTING -o end0 -j MASQUERADE
 
