@@ -11,7 +11,6 @@ sudo apt install curl
 sudo apt install wget
 sudo apt install git
 y
-sudo apt install unzip
 sudo apt install nano
 sudo apt install htop
 sudo apt install ca-certificates
