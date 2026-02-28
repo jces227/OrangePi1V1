@@ -40,10 +40,32 @@ echo "10-dhcp-all-interfaces.yaml Downloading..."
 sudo rm /etc/netplan/10-dhcp-all-interfaces.yaml
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-dhcp-all-interfaces.yaml -o /etc/netplan/10-dhcp-all-interfaces.yaml
 
+echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-router.conf
+sysctl --system
+netplan apply
 
+sudo apt update
+sudo apt install iptables iptables-persistent -y
 
+iptables -t nat -A POSTROUTING -o end0 -j MASQUERADE
 
+iptables -A FORWARD -i end0 -o lan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 
+iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
+
+netfilter-persistent save
+
+sudo apt install dnsmasq -y
+
+mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
+
+sudo systemctl stop systemd-resolved
+
+sudo systemctl disable systemd-resolved
+
+sudo rm /etc/resolv.conf
+
+echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
 
 #sudo mkdir /var/www/html/admin
 #sudo chown -R www-data:www-data /var/www/html/admin
