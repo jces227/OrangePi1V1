@@ -67,6 +67,49 @@ sudo rm /etc/resolv.conf
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
 
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/dnsmasq.conf -o /etc/dnsmasq.conf
+
+sudo systemctl enable dnsmasq
+sudo systemctl restart dnsmasq
+sudo systemctl status dnsmasq
+
+ip addr show lan0
+ip addr show end0
+
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/99-router.conf -o /etc/sysctl.d/99-router.conf
+
+sudo sysctl --system
+
+sysctl net.ipv4.ip_forward
+
+sudo iptables -t nat -L -n -v
+
+sudo apt install iptables-persistent -y
+sudo netfilter-persistent save
+
+echo "Firewall Setup..."
+sudo iptables -P INPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -P OUTPUT ACCEPT
+
+sudo iptables -A INPUT -i lo -j ACCEPT
+
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+sudo iptables -A INPUT -i lan0 -j ACCEPT
+
+sudo iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
+
+sudo netfilter-persistent save
+
+
+
+
+
+
+
+
 #sudo mkdir /var/www/html/admin
 #sudo chown -R www-data:www-data /var/www/html/admin
 
