@@ -1,0 +1,20 @@
+{
+    "admin_username": "omada",
+    "admin_password": "2y$12$2eB28V7vvmnqTTBV\/z1\/TOPgFLLv1okvOFcG97EhhAT\/tok8K9whW",
+
+    "wifi_name": "BGS sample",
+    "logo_file": "final logo.png",
+
+    "controller_ip": "87.106.111.27",
+    "port": "8043",
+    "controller_id": "35ace8335d80142a7012608e675ef71b",
+    "operator_username": "operator1",
+    "operator_password": "Admin_12345",
+
+    "packages": {
+        "1":  { "hours": 0, "minutes": 15 },
+        "5":  { "hours": 2, "minutes": 0 },
+        "10": { "hours": 5, "minutes": 0 },
+        "20": { "hours": 12, "minutes": 0 }
+    }
+}

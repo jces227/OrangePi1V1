@@ -49,17 +49,17 @@ netplan apply
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables iptables-persistent
 
-iptables -t nat -A POSTROUTING -o end0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o end0 -j MASQUERADE
 
-iptables -A FORWARD -i end0 -o lan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i end0 -o lan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 
-iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
+sudo iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
 
-netfilter-persistent save
+sudo netfilter-persistent save
 
 sudo apt install dnsmasq -y
 
-mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
+sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.bak
 
 sudo systemctl stop systemd-resolved
 
@@ -67,7 +67,7 @@ sudo systemctl disable systemd-resolved
 
 sudo rm /etc/resolv.conf
 
-echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
+sudo echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
 
 sudo rm /etc/dnsmasq.conf
 
@@ -86,12 +86,60 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/99-route
 
 sudo sysctl --system
 
-sysctl net.ipv4.ip_forward
+sudo sysctl net.ipv4.ip_forward
 
 sudo iptables -t nat -L -n -v
 
 sudo apt install iptables-persistent -y
 sudo netfilter-persistent save
+
+echo "Installing Admin Portal..."
+sudo apt install apache2 php -y
+
+sudo mkdir /var/www/html/admin
+sudo mkdir -p /var/www/html/admin/css
+sudo chown -R www-data:www-data /var/www/html/admin
+
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/config.json -o /var/www/html/admin/config.json
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/dashboard.php -o /var/www/html/admin/dashboard.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/index.php -o /var/www/html/admin/index.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/logout.php -o /var/www/html/admin/logout.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/css/style.css -o /var/www/html/admin/css/style.css
+
+sudo systemctl restart php8.4-fpm
+sudo systemctl restart nginx
+
+sudo chown -R www-data:www-data /var/www/html
+sudo chmod -R 755 /var/www/html
+
+echo "Installing Client Portal..."
+sudo mkdir -p /var/www/html/portal
+sudo chown -R www-data:www-data /var/www/html/portal
+sudo chmod 644 /var/www/html/admin/config.json
+sudo mkdir -p /var/www/html/portal/assets/css
+
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/config_loader.php -o /var/www/html/portal/config_loader.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/index.php -o /var/www/html/portal/index.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/css/style.css -o /var/www/html/portal/assets/css/style.css
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_session.php -o /var/www/html/portal/api/get_session.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_status.php -o /var/www/html/portal/api/get_status.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/assets/js/app.js -o /var/www/html/portal/assets/js/app.js
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
+
+
+sudo chown -R www-data:www-data /var/www/html/admin/uploads/
+sudo chmod -R 755 /var/www/html/admin/uploads/
+
+sudo chown www-data:www-data /var/lib/misc/dnsmasq.leases
+sudo chmod 644 /var/lib/misc/dnsmasq.leases
+
+
+
+
+
+
+
+
 
 #echo "Firewall Setup..."
 #sudo iptables -P INPUT DROP
