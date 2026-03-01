@@ -40,6 +40,7 @@ sudo systemctl enable dphys-swapfile
 echo "10-dhcp-all-interfaces.yaml Downloading..."
 sudo rm /etc/netplan/10-dhcp-all-interfaces.yaml
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-dhcp-all-interfaces.yaml -o /etc/netplan/10-dhcp-all-interfaces.yaml
+sudo chmod 600 /etc/netplan/10-dhcp-all-interfaces.yaml
 
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-router.conf
 sysctl --system
