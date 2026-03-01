@@ -1,8 +1,9 @@
 #!/bin/bash
 
-echo "LAN Rules..."
-sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
-sudo udevadm control --reload
+#echo "LAN Rules..."
+#sudo rm /etc/udev/rules.d/10-lan0.rules
+#sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
+#sudo udevadm control --reload
 
 echo "Updating System"
 sudo apt update && sudo apt upgrade -y
@@ -37,7 +38,7 @@ sudo apt install -y dphys-swapfile
 sudo systemctl enable dphys-swapfile
 
 echo "10-dhcp-all-interfaces.yaml Downloading..."
-#sudo rm /etc/netplan/10-dhcp-all-interfaces.yaml
+sudo rm /etc/netplan/10-dhcp-all-interfaces.yaml
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-dhcp-all-interfaces.yaml -o /etc/netplan/10-dhcp-all-interfaces.yaml
 
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-router.conf
@@ -67,6 +68,8 @@ sudo rm /etc/resolv.conf
 
 echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
 
+sudo rm /etc/dnsmasq.conf
+
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/dnsmasq.conf -o /etc/dnsmasq.conf
 
 sudo systemctl enable dnsmasq
@@ -75,6 +78,8 @@ sudo systemctl status dnsmasq
 
 ip addr show lan0
 ip addr show end0
+
+sudo rm /etc/sysctl.d/99-router.conf
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/99-router.conf -o /etc/sysctl.d/99-router.conf
 
@@ -87,21 +92,21 @@ sudo iptables -t nat -L -n -v
 sudo apt install iptables-persistent -y
 sudo netfilter-persistent save
 
-echo "Firewall Setup..."
-sudo iptables -P INPUT DROP
-sudo iptables -P FORWARD DROP
-sudo iptables -P OUTPUT ACCEPT
+#echo "Firewall Setup..."
+#sudo iptables -P INPUT DROP
+#sudo iptables -P FORWARD DROP
+#sudo iptables -P OUTPUT ACCEPT
 
-sudo iptables -A INPUT -i lo -j ACCEPT
+#sudo iptables -A INPUT -i lo -j ACCEPT
 
-sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#sudo iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
-sudo iptables -A INPUT -i lan0 -j ACCEPT
+#sudo iptables -A INPUT -i lan0 -j ACCEPT
 
-sudo iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
+#sudo iptables -A FORWARD -i lan0 -o end0 -j ACCEPT
 
-sudo netfilter-persistent save
+#sudo netfilter-persistent save
 
 
 
