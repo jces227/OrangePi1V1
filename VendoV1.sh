@@ -7,7 +7,6 @@
 
 echo "Updating System"
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y
 sudo apt install -y curl
 sudo apt install -y wget
 sudo apt install -y git
@@ -133,10 +132,38 @@ sudo chmod -R 755 /var/www/html/admin/uploads/
 sudo chown www-data:www-data /var/lib/misc/dnsmasq.leases
 sudo chmod 644 /var/lib/misc/dnsmasq.leases
 
+echo "Coins daemon installed..."
+sudo apt update
+sudo apt install python3-venv python3-full
+
+sudo mkdir -p /opt/coin_env
+sudo python3 -m venv /opt/coin_env
+
+source /opt/coin_env/bin/activate
+
+pip install OPi.GPIO
+
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/coin_daemon.py -o /usr/local/bin/coin_daemon.py
+sudo chmod +x /usr/local/bin/coin_daemon.py
+
+sudo /opt/coin_env/bin/python /usr/local/bin/coin_daemon.py
+
+sudo touch /var/www/html/portal/coins.txt
+sudo chown www-data:www-data /var/www/html/portal/coins.txt
+sudo chmod 666 /var/www/html/portal/coins.txt
+
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/coin.service -o /etc/systemd/system/coin.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable coin.service
+sudo systemctl start coin.service
 
 
 
 
+sudo systemctl daemon-reload
+sudo systemctl enable coin_daemon.service
+sudo systemctl start coin_daemon.service
 
 
 
