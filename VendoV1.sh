@@ -16,7 +16,6 @@ sudo apt install -y ca-certificates
 sudo apt install -y openssl
 sudo apt install -y gnupg
 sudo apt install -y lsb-release
-sudo apt install -y software-properties-common
 
 echo "Installing Ngix"
 sudo apt install -y nginx
