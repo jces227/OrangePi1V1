@@ -163,7 +163,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable coin_daemon.service
 sudo systemctl start coin_daemon.service
 
-
+sudo reboot
 
 
 #echo "Firewall Setup.."
