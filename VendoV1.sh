@@ -98,6 +98,7 @@ sudo mkdir -p /var/www/html/admin/css
 sudo mkdir -p /var/www/html/admin/css
 sudo mkdir -p /var/www/html/admin/css
 sudo mkdir -p /var/www/html/admin/css
+sudo mkdir -p /var/www/html/admin/uploads
 sudo chown -R www-data:www-data /var/www/html/admin
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/config.json -o /var/www/html/admin/config.json
@@ -119,6 +120,7 @@ sudo chmod 644 /var/www/html/admin/config.json
 sudo mkdir -p /var/www/html/portal/assets/css
 sudo mkdir -p /var/www/html/portal/api
 sudo mkdir -p /var/www/html/portal/assets/js
+sudo mkdir -p /var/www/html/admin/uploads
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/config_loader.php -o /var/www/html/portal/config_loader.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/index.php -o /var/www/html/portal/index.php
