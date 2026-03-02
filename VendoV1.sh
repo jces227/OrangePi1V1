@@ -73,7 +73,6 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/dnsmasq.
 
 sudo systemctl enable dnsmasq
 sudo systemctl restart dnsmasq
-sudo systemctl status dnsmasq
 
 #ip addr show lan0
 #ip addr show end0
@@ -96,6 +95,9 @@ sudo apt install apache2 php -y
 
 sudo mkdir /var/www/html/admin
 sudo mkdir -p /var/www/html/admin/css
+sudo mkdir -p /var/www/html/admin/css
+sudo mkdir -p /var/www/html/admin/css
+sudo mkdir -p /var/www/html/admin/css
 sudo chown -R www-data:www-data /var/www/html/admin
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/config.json -o /var/www/html/admin/config.json
@@ -115,6 +117,8 @@ sudo mkdir -p /var/www/html/portal
 sudo chown -R www-data:www-data /var/www/html/portal
 sudo chmod 644 /var/www/html/admin/config.json
 sudo mkdir -p /var/www/html/portal/assets/css
+sudo mkdir -p /var/www/html/portal/api
+sudo mkdir -p /var/www/html/portal/assets/js
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/config_loader.php -o /var/www/html/portal/config_loader.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/index.php -o /var/www/html/portal/index.php
