@@ -125,6 +125,8 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/a
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/assets/js/app.js -o /var/www/html/portal/assets/js/app.js
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/get_coins.php -o /var/www/html/portal/get_coins.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/reset_coins.php -o /var/www/html/portal/reset_coins.php
 
 sudo chown -R www-data:www-data /var/www/html/admin/uploads/
 sudo chmod -R 755 /var/www/html/admin/uploads/
@@ -157,9 +159,6 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/coin.ser
 sudo systemctl daemon-reload
 sudo systemctl enable coin.service
 sudo systemctl start coin.service
-
-
-
 
 sudo systemctl daemon-reload
 sudo systemctl enable coin_daemon.service
