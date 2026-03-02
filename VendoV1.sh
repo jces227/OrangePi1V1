@@ -41,7 +41,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-dhcp-
 sudo chmod 600 /etc/netplan/10-dhcp-all-interfaces.yaml
 
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-router.conf
-sysctl --system
+sudo sysctl --system
 netplan apply
 
 sudo apt update
@@ -75,8 +75,8 @@ sudo systemctl enable dnsmasq
 sudo systemctl restart dnsmasq
 sudo systemctl status dnsmasq
 
-ip addr show lan0
-ip addr show end0
+#ip addr show lan0
+#ip addr show end0
 
 sudo rm /etc/sysctl.d/99-router.conf
 
