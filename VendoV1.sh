@@ -1,9 +1,9 @@
 #!/bin/bash
 
-#echo "LAN Rules..."
-#sudo rm /etc/udev/rules.d/10-lan0.rules
-#sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
-#sudo udevadm control --reload
+echo "LAN Rules..."
+sudo rm /etc/udev/rules.d/10-lan0.rules
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
+sudo udevadm control --reload
 
 echo "Updating System"
 sudo apt update && sudo apt upgrade -y
