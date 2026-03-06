@@ -103,6 +103,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/da
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/index.php -o /var/www/html/admin/index.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/logout.php -o /var/www/html/admin/logout.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/css/style.css -o /var/www/html/admin/css/style.css
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/default -o /etc/nginx/sites-enabled/default
 
 sudo systemctl restart php8.4-fpm
 sudo systemctl restart nginx
