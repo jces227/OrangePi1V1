@@ -15,7 +15,7 @@ if (!$config) {
 
 // Define dynamic constants
 define("WIFI_NAME", $config['wifi_name'] ?? 'WiFi');
-define("LOGO_FILE", "/admin/uploads" . ($config['logo_file'] ?? ''));
+define("LOGO_FILE", "/admin/uploads/" . ($config['logo_file'] ?? ''));
 define("CONTROLLER_IP", $config['controller_ip'] ?? '');
 define("CONTROLLER_PORT", $config['controller_port'] ?? '');
 define("CONTROLLER_ID", $config['controller_id'] ?? '');
