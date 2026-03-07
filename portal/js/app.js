@@ -112,22 +112,22 @@ function computeMinutes(coins) {
 
     let minutes = 0;
 
-    // Convert packages object into sorted array (highest price first)
+    // Convert packages into sorted array (highest price first)
     let packages = Object.keys(PACKAGES)
         .map(price => ({
-            price: parseInt(price),
-            minutes: (PACKAGES[price].hours * 60) + PACKAGES[price].minutes
+            price: Number(price),
+            minutes: (Number(PACKAGES[price].hours) * 60) + Number(PACKAGES[price].minutes)
         }))
         .sort((a, b) => b.price - a.price);
 
-    packages.forEach(pkg => {
+    for (let pkg of packages) {
 
         while (coins >= pkg.price) {
             minutes += pkg.minutes;
             coins -= pkg.price;
         }
 
-    });
+    }
 
     return minutes;
 }
