@@ -11,12 +11,11 @@ let countdown = 60;
 ================================= */
 function openCoinModal() {
 
-    fetch("/portal/check_vendo.php")
+    fetch("/portal/check_vendo.php?mac=" + CLIENT_MAC)
     .then(res => res.text())
     .then(status => {
 
         if (status.trim() === "BUSY") {
-
             alert("Vendo is Busy. Please wait.");
             return;
         }
