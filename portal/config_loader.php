@@ -17,7 +17,13 @@ if (!$config) {
 define("WIFI_NAME", $config['wifi_name'] ?? 'WiFi');
 define("LOGO_FILE", "/admin/uploads/" . ($config['logo_file'] ?? ''));
 define("CONTROLLER_IP", $config['controller_ip'] ?? '');
-define("CONTROLLER_PORT", $config['controller_port'] ?? '');
+define("CONTROLLER_PORT", $config['port'] ?? '');
 define("CONTROLLER_ID", $config['controller_id'] ?? '');
 define("OPERATOR_USERNAME", $config['operator_username'] ?? '');
 define("OPERATOR_PASSWORD", $config['operator_password'] ?? '');
+
+// Load packages
+$PACKAGES = $config['packages'] ?? [];
+
+// Optional: make it a constant too
+define("PACKAGES", $PACKAGES);

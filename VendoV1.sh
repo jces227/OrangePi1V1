@@ -116,17 +116,17 @@ echo "Installing Client Portal..."
 sudo mkdir -p /var/www/html/portal
 sudo chown -R www-data:www-data /var/www/html/portal
 sudo chmod 644 /var/www/html/admin/config.json
-sudo mkdir -p /var/www/html/portal/assets/css
+sudo mkdir -p /var/www/html/portal/css
 sudo mkdir -p /var/www/html/portal/api
-sudo mkdir -p /var/www/html/portal/assets/js
+sudo mkdir -p /var/www/html/portal/js
 sudo mkdir -p /var/www/html/admin/uploads
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/config_loader.php -o /var/www/html/portal/config_loader.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/index.php -o /var/www/html/portal/index.php
-sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/css/style.css -o /var/www/html/portal/assets/css/style.css
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/css/style.css -o /var/www/html/portal/css/style.css
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_session.php -o /var/www/html/portal/api/get_session.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_status.php -o /var/www/html/portal/api/get_status.php
-sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/assets/js/app.js -o /var/www/html/portal/assets/js/app.js
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/js/app.js -o /var/www/html/portal/js/app.js
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/get_coins.php -o /var/www/html/portal/get_coins.php

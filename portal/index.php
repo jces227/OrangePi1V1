@@ -27,7 +27,7 @@ if (file_exists($leases_file)) {
 <html>
 <head>
     <title>Client Portal</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/portal/css/style.css">
 </head>
 <body>
 
@@ -86,8 +86,11 @@ if (file_exists($leases_file)) {
 
 <script>
     const CLIENT_MAC = "<?php echo $client_mac; ?>";
+
+    // Load packages from config.json
+    const PACKAGES = <?php echo json_encode(PACKAGES); ?>;
 </script>
-<script src="/portal/assets/js/app.js"></script>
+<script src="/portal/js/app.js"></script>
 
 
 </body>
