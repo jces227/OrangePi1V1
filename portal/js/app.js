@@ -11,27 +11,38 @@ let countdown = 60;
 ================================= */
 function openCoinModal() {
 
-    const modal = document.getElementById("coinModal");
-    if (!modal) return;
+    fetch("/portal/check_vendo.php")
+    .then(res => res.text())
+    .then(status => {
 
-    modal.classList.add("show");
+        if (status.trim() === "BUSY") {
 
-    // Reset backend coin counter
-    fetch("/portal/reset_coins.php?nocache=" + Date.now())
-    .then(() => {
+            alert("Vendo is Busy. Please wait.");
+            return;
+        }
 
-        lastTotal = 0;
-        totalAmount = 0;
-        countdown = 60;
+        const modal = document.getElementById("coinModal");
+        if (!modal) return;
 
-        updateCountdownDisplay();
-        updateDisplay();
+        modal.classList.add("show");
 
-        startCountdown();
-        startPolling();
+        fetch("/portal/reset_coins.php?nocache=" + Date.now())
+        .then(() => {
 
-    })
-    .catch(err => console.error("Reset error:", err));
+            lastTotal = 0;
+            totalAmount = 0;
+            countdown = 60;
+
+            updateCountdownDisplay();
+            updateDisplay();
+
+            startCountdown();
+            startPolling();
+
+        });
+
+    });
+
 }
 
 

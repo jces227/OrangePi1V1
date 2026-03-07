@@ -127,6 +127,9 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/c
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_session.php -o /var/www/html/portal/api/get_session.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/get_status.php -o /var/www/html/portal/api/get_status.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/js/app.js -o /var/www/html/portal/js/app.js
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/check_vendo.php -o /var/www/html/portal/check_vendo.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/release_vendo.php -o /var/www/html/portal/release_vendo.php
+
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/get_coins.php -o /var/www/html/portal/get_coins.php
