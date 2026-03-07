@@ -190,8 +190,11 @@ function closeCoinModal() {
     clearInterval(timerInterval);
     clearInterval(coinPollInterval);
 
-    // Optional reset
     fetch("/portal/reset_coins.php?nocache=" + Date.now());
+
+    // release vendo
+    fetch("/portal/release_vendo.php");
+
 }
 
 
