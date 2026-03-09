@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#curl -sL https://raw.githubusercontent.com/jces227/OrangePi1V1/main/VendoV1.sh | bash
 #echo "LAN Rules..."
 #sudo rm /etc/udev/rules.d/10-lan0.rules
 #sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
@@ -129,6 +129,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/a
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/js/app.js -o /var/www/html/portal/js/app.js
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/check_vendo.php -o /var/www/html/portal/check_vendo.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/release_vendo.php -o /var/www/html/portal/release_vendo.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/start_session.php -o /var/www/html/portal/api/start_session.php
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 

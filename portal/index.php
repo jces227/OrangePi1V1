@@ -79,7 +79,7 @@ if (file_exists($leases_file)) {
         <p>Time: <span id="estimatedTime">0 minutes</span></p>
         <p>Total Amount: ₱ <span id="totalAmount">0</span></p>
 
-        <button id="cancelBtn" onclick="closeCoinModal()">Cancel</button>
+        <button id="cancelBtn" onclick="finishCoinSession()">Cancel</button>
     </div>
 </div>
 
@@ -89,6 +89,12 @@ if (file_exists($leases_file)) {
 
     // Load packages from config.json
     const PACKAGES = <?php echo json_encode(PACKAGES); ?>;
+
+
+    const clientMac = "<?php echo $client_mac; ?>";
+    const apMac = "<?= $_GET['apMac'] ?? '' ?>";
+    const ssidName = "<?= $_GET['ssidName'] ?? '' ?>";
+    const radioId = "<?= $_GET['radioId'] ?? '' ?>";
 </script>
 <script src="/portal/js/app.js"></script>
 

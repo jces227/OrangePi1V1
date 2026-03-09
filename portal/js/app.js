@@ -202,10 +202,36 @@ function closeCoinModal() {
 ================================= */
 function finishCoinSession() {
 
-    if (totalAmount > 0) {
-        alert("Coins inserted: ₱" + totalAmount);
-        // Later: send to backend for session start
+    if (totalAmount <= 0) {
+        closeCoinModal();
+        return;
     }
 
-    closeCoinModal();
+    let minutes = computeMinutes(totalAmount);
+
+    fetch("/portal/api/start_session.php", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+
+        body:
+            "clientMac=" + encodeURIComponent(CLIENT_MAC) +
+            "&minutes=" + minutes
+
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        console.log(data);
+
+        alert("Session Started!");
+
+        closeCoinModal();
+
+    })
+    .catch(err => console.error(err));
+
 }

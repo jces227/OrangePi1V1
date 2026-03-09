@@ -22,6 +22,9 @@ define("CONTROLLER_ID", $config['controller_id'] ?? '');
 define("OPERATOR_USERNAME", $config['operator_username'] ?? '');
 define("OPERATOR_PASSWORD", $config['operator_password'] ?? '');
 
+define("COOKIE_FILE_PATH", __DIR__ . "/cookie.txt");
+define("TOKEN_FILE_PATH", __DIR__ . "/token.txt");
+
 // Load packages
 $PACKAGES = $config['packages'] ?? [];
 
