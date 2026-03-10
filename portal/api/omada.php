@@ -44,7 +44,7 @@ class OmadaAPI {
         return $resObj;
     }
 
-    public static function authorize($clientMac, $apMac, $ssidName, $radioId, $time) {
+    public static function authorize($clientMac, $apMac, $ssidName, $radioId, $site, $time) {
 
         $token = trim(file_get_contents(TOKEN_FILE_PATH));
 

@@ -231,7 +231,15 @@ function finishCoinSession() {
 
         console.log(data);
 
-        window.location.href = "success.html";
+        if (data.errorCode === 0) {
+
+            window.location.href = "success.html";
+
+        } else {
+
+            alert("Authentication failed");
+
+        }
 
     })
     .catch(err => console.error(err));

@@ -18,6 +18,7 @@ $result = OmadaAPI::authorize(
     $apMac,
     $ssidName,
     $radioId,
+    $site,
     $expire
 );
 header('Content-Type: application/json');
