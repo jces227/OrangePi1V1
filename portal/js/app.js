@@ -226,10 +226,12 @@ function finishCoinSession() {
             "&minutes=" + minutes
 
     })
-    .then(res => res.json())
-    .then(data => {
+    .then(res => res.text())
+    .then(text => {
 
-        console.log(data);
+        console.log("Server response:", text);
+
+        let data = JSON.parse(text);
 
         if (data.errorCode === 0) {
 
