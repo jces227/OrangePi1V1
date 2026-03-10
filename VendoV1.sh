@@ -119,7 +119,6 @@ sudo chmod 644 /var/www/html/admin/config.json
 sudo mkdir -p /var/www/html/portal/css
 sudo mkdir -p /var/www/html/portal/api
 sudo mkdir -p /var/www/html/portal/js
-sudo mkdir -p /var/www/html/admin/uploads
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/config_loader.php -o /var/www/html/portal/config_loader.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/index.php -o /var/www/html/portal/index.php
@@ -130,6 +129,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/j
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/check_vendo.php -o /var/www/html/portal/check_vendo.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/release_vendo.php -o /var/www/html/portal/release_vendo.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/start_session.php -o /var/www/html/portal/api/start_session.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/omada.php -o /var/www/html/portal/api/omada.php
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 
@@ -168,11 +168,13 @@ sudo systemctl daemon-reload
 sudo systemctl enable coin.service
 sudo systemctl start coin.service
 
+sudo reboot
+
 #sudo systemctl daemon-reload
 #sudo systemctl enable coin_daemon.service
 #sudo systemctl start coin_daemon.service
 
-sudo reboot
+
 
 
 #echo "Firewall Setup.."

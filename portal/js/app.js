@@ -218,7 +218,11 @@ function finishCoinSession() {
         },
 
         body:
-            "clientMac=" + encodeURIComponent(CLIENT_MAC) +
+            "clientMac=" + encodeURIComponent(clientMac) +
+            "&apMac=" + encodeURIComponent(apMac) +
+            "&ssidName=" + encodeURIComponent(ssidName) +
+            "&radioId=" + encodeURIComponent(radioId) +
+            "&site=" + encodeURIComponent(site) +
             "&minutes=" + minutes
 
     })
@@ -227,9 +231,7 @@ function finishCoinSession() {
 
         console.log(data);
 
-        alert("Session Started!");
-
-        closeCoinModal();
+        window.location.href = "success.html";
 
     })
     .catch(err => console.error(err));

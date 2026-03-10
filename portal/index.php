@@ -95,6 +95,7 @@ if (file_exists($leases_file)) {
     const apMac = "<?= $_GET['apMac'] ?? '' ?>";
     const ssidName = "<?= $_GET['ssidName'] ?? '' ?>";
     const radioId = "<?= $_GET['radioId'] ?? '' ?>";
+    const site = "<?= $_GET['site'] ?? '' ?>";
 </script>
 <script src="/portal/js/app.js"></script>
 
