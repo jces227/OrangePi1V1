@@ -130,6 +130,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/c
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/release_vendo.php -o /var/www/html/portal/release_vendo.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/start_session.php -o /var/www/html/portal/api/start_session.php
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/api/omada.php -o /var/www/html/portal/api/omada.php
+sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/success.html -o /var/www/html/portal/success.html
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/index.php -o /var/www/html/index.php
 
