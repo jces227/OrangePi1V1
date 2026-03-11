@@ -92,10 +92,11 @@ if (file_exists($leases_file)) {
 
 
     const clientMac = "<?php echo $client_mac; ?>";
-    const apMac = "<?= $_GET['apMac'] ?? '' ?>";
-    const ssidName = "<?= $_GET['ssidName'] ?? '' ?>";
-    const radioId = "<?= $_GET['radioId'] ?? '' ?>";
-    const site = "<?= $_GET['site'] ?? '' ?>";
+    const apMac = "<?php echo AP_MAC; ?>";
+    const ssidName = "<?php echo SSID_NAME; ?>";
+    const radioId = "<?php echo RADIO_ID_24G; ?>";  // or RADIO_ID_5G depending
+    const site = "<?php echo SITE_NAME; ?>";
+
 </script>
 <script src="/portal/js/app.js"></script>
 
