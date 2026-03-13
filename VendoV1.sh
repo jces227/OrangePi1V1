@@ -5,6 +5,8 @@
 #sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/10-lan0.rules -o /etc/udev/rules.d/10-lan0.rules
 #sudo udevadm control --reload
 
+set -e
+
 echo "Updating System"
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y curl
@@ -16,6 +18,7 @@ sudo apt install -y ca-certificates
 sudo apt install -y openssl
 sudo apt install -y gnupg
 sudo apt install -y lsb-release
+sudo apt install -y python3-pip
 
 echo "Installing Ngix"
 sudo apt install -y nginx
@@ -42,7 +45,7 @@ sudo chmod 600 /etc/netplan/10-dhcp-all-interfaces.yaml
 
 echo "net.ipv4.ip_forward=1" > /etc/sysctl.d/99-router.conf
 sudo sysctl --system
-netplan apply
+sudo netplan apply
 
 sudo apt update
 sudo DEBIAN_FRONTEND=noninteractive apt install -y iptables iptables-persistent
@@ -91,7 +94,7 @@ sudo apt install iptables-persistent -y
 sudo netfilter-persistent save
 
 echo "Installing Admin Portal..."
-sudo apt install apache2 php -y
+#sudo apt install apache2 php -y
 
 sudo mkdir /var/www/html/admin
 sudo chown -R www-data:www-data /var/www/html/admin
@@ -106,7 +109,7 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/admin/cs
 sudo rm /etc/nginx/sites-enabled/default
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/default -o /etc/nginx/sites-enabled/default
 
-sudo systemctl restart php8.4-fpm
+sudo systemctl restart php*-fpm
 sudo systemctl restart nginx
 
 sudo chown -R www-data:www-data /var/www/html
@@ -140,6 +143,9 @@ sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/portal/r
 sudo chown -R www-data:www-data /var/www/html/admin/uploads/
 sudo chmod -R 755 /var/www/html/admin/uploads/
 
+sudo systemctl restart php*-fpm
+sudo systemctl restart nginx
+
 sudo chown www-data:www-data /var/lib/misc/dnsmasq.leases
 sudo chmod 644 /var/lib/misc/dnsmasq.leases
 
@@ -150,7 +156,7 @@ sudo apt install python3-venv python3-full
 sudo mkdir -p /opt/coin_env
 sudo python3 -m venv /opt/coin_env
 
-source /opt/coin_env/bin/activate
+#source /opt/coin_env/bin/activate
 
 pip install OPi.GPIO
 
