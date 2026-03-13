@@ -33,6 +33,7 @@ sudo apt install -y php-mbstring
 sudo apt install -y php-xml
 sudo apt install -y php-zip
 
+sudo apt install -y python3-pip
 pip3 install requests
 sudo apt install -y supervisor
 sudo apt install -y dphys-swapfile
