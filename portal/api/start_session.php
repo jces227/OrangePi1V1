@@ -5,11 +5,12 @@ require_once "omada.php";
 $clientMac = $_POST['clientMac'];
 $apMac = $_POST['apMac'];
 $ssidName = $_POST['ssidName'];
-//$radioId = $_POST['radioId'];
+$radioId24g = $_POST['radioId24g'];
+$radioId5g = $_POST['radioId5g'];
 $site = $_POST['site'];
 $minutes = intval($_POST['minutes']);
 
-if (!$clientMac || !$apMac || !$ssidName || !$site) {
+if (!$clientMac || !$apMac || !$ssidName || !$radioId24g || !$radioId5g || !$site) {
     echo json_encode([
         "errorCode" => -1,
         "msg" => "Missing required parameters"
@@ -26,7 +27,7 @@ $result5 = OmadaAPI::authorize(
     $clientMac,
     $apMac,
     $ssidName,
-    1,
+    $radioId5g,
     $site,
     $expire
 );
@@ -49,7 +50,7 @@ $result24 = OmadaAPI::authorize(
     $clientMac,
     $apMac,
     $ssidName,
-    0,
+    $radioId24g,
     $site,
     $expire
 );

@@ -221,7 +221,8 @@ function finishCoinSession() {
             "clientMac=" + encodeURIComponent(clientMac) +
             "&apMac=" + encodeURIComponent(apMac) +
             "&ssidName=" + encodeURIComponent(ssidName) +
-            "&radioId=" + encodeURIComponent(radioId) +
+            "&radioId24g=" + encodeURIComponent(radioId24g) +
+            "&radioId5g=" + encodeURIComponent(radioId5g) +
             "&site=" + encodeURIComponent(site) +
             "&minutes=" + minutes
 

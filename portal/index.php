@@ -94,7 +94,8 @@ if (file_exists($leases_file)) {
     const clientMac = "<?php echo $client_mac; ?>";
     const apMac = "<?php echo AP_MAC; ?>";
     const ssidName = "<?php echo SSID_NAME; ?>";
-    const radioId = "<?php echo RADIO_ID_24G; ?>";  // or RADIO_ID_5G depending
+    const radioId24g = "<?php echo RADIO_ID_24G; ?>";  // or RADIO_ID_5G depending
+    const radioId5g = "<?php echo RADIO_ID_5G; ?>";
     const site = "<?php echo SITE_NAME; ?>";
 
 </script>
