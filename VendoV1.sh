@@ -34,7 +34,7 @@ sudo apt install -y php-xml
 sudo apt install -y php-zip
 
 sudo apt install -y python3-pip
-pip3 install requests
+sudo /opt/coin_env/bin/pip install requests
 sudo apt install -y supervisor
 sudo apt install -y dphys-swapfile
 sudo systemctl enable dphys-swapfile
@@ -159,7 +159,7 @@ sudo python3 -m venv /opt/coin_env
 
 #source /opt/coin_env/bin/activate
 
-pip install OPi.GPIO
+sudo /opt/coin_env/bin/pip install OPi.GPIO
 
 sudo curl -L https://raw.githubusercontent.com/jces227/OrangePi1V1/main/coin_daemon.py -o /usr/local/bin/coin_daemon.py
 sudo chmod +x /usr/local/bin/coin_daemon.py
